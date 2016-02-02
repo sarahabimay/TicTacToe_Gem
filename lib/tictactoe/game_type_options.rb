@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 module TicTacToe 
   class GameTypeOptions
     GAME_OPTIONS = {
