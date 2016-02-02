@@ -4,6 +4,7 @@ require "stringio"
 RSpec.describe TicTacToe::PlayerFactory do
   let(:display_double) { double("UserInterface").as_null_object }
   let(:factory) { TicTacToe::PlayerFactory.new(display_double) }
+  HVH = 1
   HVB = 2
   BVH = 3
 

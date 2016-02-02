@@ -5,7 +5,6 @@ RSpec.describe TicTacToe::Game do
   let(:ui_double) { double("UserInterface").as_null_object }
   let(:player1_fake) { instance_spy(TicTacToe::HumanPlayer) }
   let(:player2_fake) { instance_spy(TicTacToe::HumanPlayer) }
-  HVH = 1
 
   it "game has two players" do
     game = TicTacToe::Game.new(TicTacToe::Board.new(TicTacToe::BoardOptions::THREE_BY_THREE), HVH, ui_double, [player1_fake, player2_fake]) 
