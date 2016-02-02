@@ -14,11 +14,6 @@ module TicTacToe
       @board_cells = create_board_cells(cells)
     end
 
-    def create_board_cells(cells)
-      return cells if !cells.nil? && cells.flatten.length > 0
-      Array.new(@dimension) { Array.new(@dimension) }
-    end
-
     def play_mark_in_position(mark, position_key)
       raise ArgumentError, "Invalid Board Position" if !valid_position?(position_key)
       raise ArgumentError, "Position Already Taken" if position_occupied?(position_key)
@@ -34,10 +29,6 @@ module TicTacToe
       true
     end
 
-    def position_occupied?(position_key)
-      Mark.is_a_mark?(find_mark_in_position(position_key.to_i))
-    end
-
     def find_mark_in_position(position_key)
       flattened = @board_cells.flatten
       flattened[position_key.to_i - ZERO_INDEX_OFFSET]
@@ -46,11 +37,6 @@ module TicTacToe
     def next_mark_to_play
       return TicTacToe::Mark::O if number_of_positions_for_mark(TicTacToe::Mark::O) < number_of_positions_for_mark(TicTacToe::Mark::X)
       Mark::X
-    end
-
-    def number_of_positions_for_mark(mark)
-      flat_board = @board_cells.flatten
-      flat_board.find_all { |x| x == mark }.size
     end
 
     def get_winning_mark
@@ -66,6 +52,22 @@ module TicTacToe
 
     def spaces_available?
       number_of_positions_for_mark(TicTacToe::Mark::X) + number_of_positions_for_mark(TicTacToe::Mark::O) != @board_size 
+    end
+
+    private
+
+    def number_of_positions_for_mark(mark)
+      flat_board = @board_cells.flatten
+      flat_board.find_all { |x| x == mark }.size
+    end
+
+    def position_occupied?(position_key)
+      Mark.is_a_mark?(find_mark_in_position(position_key.to_i))
+    end
+
+    def create_board_cells(cells)
+      return cells if !cells.nil? && cells.flatten.length > 0
+      Array.new(@dimension) { Array.new(@dimension) }
     end
 
     def found_win_for_mark(mark)
