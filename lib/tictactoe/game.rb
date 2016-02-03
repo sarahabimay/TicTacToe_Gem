@@ -18,7 +18,7 @@ module TicTacToe
     end
 
     def play_turns
-      while !@board.is_game_over? do
+      while !board.is_game_over? do
         begin
           display_board
           play_next_move
@@ -33,12 +33,12 @@ module TicTacToe
     private
 
     def play_next_move
-      next_player = find_player_by_mark(@board.next_mark_to_play)
-      @board = @board.play_mark_in_position(@board.next_mark_to_play, next_player.get_next_move(board))
+      next_player = find_player_by_mark(board.next_mark_to_play)
+      @board = board.play_mark_in_position(board.next_mark_to_play, next_player.get_next_move(board))
     end
 
     def display_board
-      user_interface.display_board(@board)
+      user_interface.display_board(board)
     end
 
     attr_reader :user_interface
