@@ -97,28 +97,17 @@ module TicTacToe
     end
 
     def find_diagonal_win_for_mark(mark)
-      diagonal_coordinates = get_diagonal_coordinates
-      result = diagonal_coordinates.collect do |group| 
-        group.all? do |two_dimensional_coords| 
-          @board_cells[two_dimensional_coords.first][two_dimensional_coords.last] == mark 
-        end
-      end
-      result.any? { |found| found == true }
+      find_row_win_for_mark(mark, get_diagonal_marks)
     end
 
-    def get_diagonal_coordinates
-      coordinates = Array.new
-      @dimension.times do |i|
-        coordinates << [i,i]
+    def get_diagonal_marks
+      diagonal_marks = board_cells.map.with_index do |row, i|
+        row[i]
       end
-      @dimension.times do |i|
-        coordinates << [i, zero_indexed_dimension - i]
-      end
-      coordinates.each_slice(@dimension).to_a
-    end
-
-    def zero_indexed_dimension
-      @dimension - ZERO_INDEX_OFFSET 
+      diagonal_marks.push(*board_cells.reverse.map.with_index do |row, i|
+        row[i]
+      end)
+      diagonal_marks = diagonal_marks.each_slice(@dimension).to_a
     end
   end
 end
