@@ -10,12 +10,12 @@ module TicTacToe
     end
 
     def get_players_for_game_type(game_type)
-      case game_type
-      when TicTacToe::GameTypeOptions::HVH
+      case TicTacToe::GameTypeOptions.lookup_game_type_for_id(game_type)
+      when "HVH"
         players = Hash[TicTacToe::Mark::X, TicTacToe::HumanPlayer.new(TicTacToe::Mark::X, display), TicTacToe::Mark::O, TicTacToe::HumanPlayer.new(TicTacToe::Mark::O, display)]
-      when TicTacToe::GameTypeOptions::HVB
+      when "HVB"
         players = Hash[TicTacToe::Mark::X, TicTacToe::HumanPlayer.new(TicTacToe::Mark::X, display), TicTacToe::Mark::O, TicTacToe::BeatableAIPlayer.new(TicTacToe::Mark::O, display)]
-      when TicTacToe::GameTypeOptions::BVH
+      when "BVH"
         players = Hash[TicTacToe::Mark::X, TicTacToe::BeatableAIPlayer.new(TicTacToe::Mark::X, display), TicTacToe::Mark::O, TicTacToe::HumanPlayer.new(TicTacToe::Mark::O, display)]
       else
         players = Hash[TicTacToe::Mark::X, TicTacToe::HumanPlayer.new(TicTacToe::Mark::X, display), TicTacToe::Mark::O, TicTacToe::HumanPlayer.new(TicTacToe::Mark::O, display)]

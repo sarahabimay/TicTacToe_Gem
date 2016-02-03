@@ -4,7 +4,6 @@ require "tictactoe/player"
 module TicTacToe
   class HumanPlayer
     include Player
-    # attr_reader :mark
 
     def initialize(mark, display)
       @mark = mark

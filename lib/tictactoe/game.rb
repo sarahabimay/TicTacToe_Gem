@@ -1,6 +1,6 @@
 module TicTacToe
   class Game
-    attr_reader :players, :game_type
+    attr_reader :players, :game_type, :board
 
     def initialize(board, game_type, user_interface, players)
       @board = board
@@ -41,6 +41,6 @@ module TicTacToe
 
     private
 
-    attr_reader :user_interface, :board
+    attr_reader :user_interface
   end
 end
