@@ -12,7 +12,7 @@ RSpec.describe TicTacToe::HumanPlayer do
 
   it "gets next position from UI" do
     expect(display_double).to receive(:ask_player_for_move).and_return("1")
-    expect(human.get_next_move(TicTacToe::Board.new(TicTacToe::BoardOptions::THREE_BY_THREE))).to eq("1")
+    expect(human.get_next_move(TicTacToe::Board.new(TicTacToe::BoardOptions::DIMENSIONS["THREE_BY_THREE"]))).to eq("1")
   end
 end
 

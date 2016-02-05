@@ -14,12 +14,7 @@ module TicTacToe
 
     def self.is_valid_game_type?(type)
       return false if type.nil?
-      GAME_OPTIONS.include?(type.to_s)
-    end
-
-    def self.is_valid_id?(id)
-      return false if id.nil?
-      ID_TO_GAME_TYPE.include?(id.to_i)
+      ID_TO_GAME_TYPE.include?(type.to_i)
     end
 
     def self.lookup_game_type_for_id(id)
