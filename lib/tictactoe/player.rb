@@ -4,6 +4,10 @@ module Player
     TicTacToe::Mark::O if mark == TicTacToe::Mark::X 
   end
 
+  def is_ready?
+    true
+  end
+
   private 
 
   attr_reader :mark

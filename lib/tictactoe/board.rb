@@ -3,14 +3,14 @@ require "tictactoe/mark"
 
 module TicTacToe
   class Board 
-    attr_reader :board_size, :board_cells
+    attr_reader :board_size, :board_cells, :dimension
 
     ZERO_INDEX_OFFSET = 1
     LOWER_INDEX_LIMIT = 1
 
     def initialize(dimension, cells = [])
       @dimension = dimension 
-      @board_size = @dimension * @dimension
+      @board_size = dimension * dimension
       @board_cells = create_board_cells(cells)
     end
 
@@ -19,8 +19,8 @@ module TicTacToe
       raise ArgumentError, "Position Already Taken" if position_occupied?(position_key)
       flattened = @board_cells.flatten
       flattened[position_key.to_i - ZERO_INDEX_OFFSET] = mark
-      @board_cells = flattened.each_slice(@dimension).to_a
-      Board.new(@dimension, @board_cells)
+      @board_cells = flattened.each_slice(dimension).to_a
+      Board.new(dimension, board_cells)
     end
 
     def valid_position?(position_key)
@@ -67,7 +67,7 @@ module TicTacToe
 
     def create_board_cells(cells)
       return cells if !cells.nil? && cells.flatten.length > 0
-      Array.new(@dimension) { Array.new(@dimension) }
+      Array.new(dimension) { Array.new(dimension) }
     end
 
     def found_win_for_mark(mark)
@@ -109,7 +109,7 @@ module TicTacToe
       diagonal_marks.push(*board_cells.reverse.map.with_index do |row, i|
         row[i]
       end)
-      diagonal_marks = diagonal_marks.each_slice(@dimension).to_a
+      diagonal_marks = diagonal_marks.each_slice(dimension).to_a
     end
   end
 end
