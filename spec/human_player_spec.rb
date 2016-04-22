@@ -15,5 +15,9 @@ RSpec.describe TicTacToe::HumanPlayer do
     expect(display_double).to receive(:ask_player_for_move).and_return("1")
     expect(human.get_next_move(TicTacToe::Board.new(TicTacToe::BoardOptions::DIMENSIONS["THREE_BY_THREE"]))).to eq("1")
   end
+
+  it "default human player is ready to play move" do
+    expect(human.is_ready?).to eq(true)
+  end
 end
 
