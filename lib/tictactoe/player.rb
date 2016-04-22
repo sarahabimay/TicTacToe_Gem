@@ -1,10 +1,10 @@
-module Player 
+module Player
   def get_opponent_mark
-    TicTacToe::Mark::X if mark == TicTacToe::Mark::O 
-    TicTacToe::Mark::O if mark == TicTacToe::Mark::X 
+    TicTacToe::Mark::X if mark == TicTacToe::Mark::O
+    TicTacToe::Mark::O if mark == TicTacToe::Mark::X
   end
 
-  private 
+  private
 
   attr_reader :mark
 end

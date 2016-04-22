@@ -13,7 +13,7 @@ module TicTacToe
       @board.get_winning_mark
     end
 
-    def find_player_by_mark(mark)
+    def find_player(mark)
       return players[mark] if players.has_key?(mark)
     end
 
@@ -33,8 +33,8 @@ module TicTacToe
     private
 
     def play_next_move
-      next_player = find_player_by_mark(board.next_mark_to_play)
-      @board = board.play_mark_in_position(board.next_mark_to_play, next_player.get_next_move(board))
+      next_player = find_player(board.next_mark_to_play)
+      @board = board.play_mark(board.next_mark_to_play, next_player.get_next_move(board))
     end
 
     def display_board

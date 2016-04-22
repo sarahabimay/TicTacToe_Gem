@@ -1,4 +1,7 @@
 require "tictactoe/beatable_ai_player"
+require "tictactoe/board"
+require "tictactoe/board_options"
+require "tictactoe/mark"
 
 RSpec.describe TicTacToe::BeatableAIPlayer do
   let(:dimension) { TicTacToe::BoardOptions::DIMENSIONS["THREE_BY_THREE"] }

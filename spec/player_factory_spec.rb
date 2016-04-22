@@ -1,4 +1,5 @@
 require "tictactoe/player_factory"
+require "tictactoe/game_type_options"
 require "stringio"
 
 RSpec.describe TicTacToe::PlayerFactory do
