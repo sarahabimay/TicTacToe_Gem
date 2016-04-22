@@ -6,6 +6,10 @@ RSpec.describe TicTacToe::BeatableAIPlayer do
   let(:display_double) { double("UserInterface").as_null_object }
   let(:beatable_player) { TicTacToe::BeatableAIPlayer.new(TicTacToe::Mark::X, display_double) }
 
+  it "beatable player is ready to play" do
+    expect(beatable_player.is_ready?).to eq(true)
+  end
+
   it "knows who it's opponent is" do
     expect(beatable_player.get_opponent_mark).to eq(TicTacToe::Mark::O)
   end
