@@ -1,4 +1,7 @@
 require "tictactoe/beatable_ai_player"
+require "tictactoe/board"
+require "tictactoe/board_options"
+require "tictactoe/mark"
 
 RSpec.describe TicTacToe::BeatableAIPlayer do
   let(:dimension) { TicTacToe::BoardOptions::DIMENSIONS["THREE_BY_THREE"] }
@@ -17,7 +20,7 @@ RSpec.describe TicTacToe::BeatableAIPlayer do
   it "gets next position from ui" do
     allow(beatable_player).to receive(:randomized_move).and_return(5)
     allow(display_double).to receive(:announce_player_move).with(TicTacToe::Mark::X, 5)
-    expect(beatable_player.get_next_move(board)).to be_between(1, 9).inclusive 
+    expect(beatable_player.get_next_move(board)).to be_between(1, 9).inclusive
   end
 
   it "displays new move to UI" do

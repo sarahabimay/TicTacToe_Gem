@@ -1,6 +1,7 @@
 require "tictactoe/human_player"
-require "stringio"
+require "tictactoe/board"
 require "tictactoe/board_options"
+require "stringio"
 
 RSpec.describe TicTacToe::HumanPlayer do
   let(:display_double) { double("UserInterface").as_null_object }
