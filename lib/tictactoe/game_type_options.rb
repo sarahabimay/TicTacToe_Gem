@@ -1,4 +1,4 @@
-module TicTacToe 
+module TicTacToe
   class GameTypeOptions
     GAME_OPTIONS = {
       "HVH" => "Human Vs Human",

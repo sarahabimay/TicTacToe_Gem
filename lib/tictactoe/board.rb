@@ -2,19 +2,19 @@ require 'enumerator'
 require "tictactoe/mark"
 
 module TicTacToe
-  class Board 
+  class Board
     attr_reader :board_size, :board_cells, :dimension
 
     ZERO_INDEX_OFFSET = 1
     LOWER_INDEX_LIMIT = 1
 
     def initialize(dimension, cells = [])
-      @dimension = dimension 
+      @dimension = dimension
       @board_size = dimension * dimension
       @board_cells = create_board_cells(cells)
     end
 
-    def play_mark_in_position(mark, position_key)
+    def play_mark(mark, position_key)
       raise ArgumentError, "Invalid Board Position" if !valid_position?(position_key)
       raise ArgumentError, "Position Already Taken" if position_occupied?(position_key)
       flattened = @board_cells.flatten
@@ -47,11 +47,11 @@ module TicTacToe
     end
 
     def is_game_over?
-      !spaces_available? || found_win  
+      !spaces_available? || found_win
     end
 
     def spaces_available?
-      number_of_positions_for_mark(TicTacToe::Mark::X) + number_of_positions_for_mark(TicTacToe::Mark::O) != @board_size 
+      number_of_positions_for_mark(TicTacToe::Mark::X) + number_of_positions_for_mark(TicTacToe::Mark::O) != @board_size
     end
 
     private
